@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+
+    <script type="text/javascript">  
+        
+        (function() {
+           console.log($_GET("id"));
+        })();
+
+        
+        function $_GET(key) {
+            var a =  window.location.search.replace("?", "").split("&");
+            //var a = s.split("&");
+            for (i=0; i < a.length; i++) {
+                var v = a[i].split("=");
+                if (v[0] == key) {
+                    return v[1];
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

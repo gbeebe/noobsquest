@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<style type="text/css">
+	.splash{
+		position: relative;
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.bg1 {
+		background-color: #aa0000;
+		transition: all 3.0s;
+	}
+
+	.bg2 {
+		background-color: #00aa00;
+		transition: all 3.0s;
+	}
+
+	.bg3 {
+		background-color: #0000aa;
+		transition: all 3.0s;
+	}
+
+	.bg4 {
+		background-color: #aaaa00;
+		transition: all 3.0s;
+	}
+
+	.bg5 {
+		background-color: #aa00aa;
+		transition: all 3.0s;
+	}
+
+	.bg6 {
+		background-color: #00aaaa;
+		transition: all 3.0s;
+	}
+
+	.btn {
+		background: #FFE400;
+		background-image: -webkit-linear-gradient(top, #FFE400, #FF7200);
+		background-image: -moz-linear-gradient(top, #FFE400, #FF7200);
+		background-image: -ms-linear-gradient(top, #FFE400, #FF7200);
+		background-image: -o-linear-gradient(top, #FFE400, #FF7200);
+		background-image: linear-gradient(to bottom, #FFE400, #FF7200);
+		-webkit-border-radius: 7;
+		-moz-border-radius: 7;
+		border-radius: 7px;
+		//text-shadow: 1px 1px 3px #ff7300;
+		font-family: Arial;
+		color: #000000;
+		font-size: 20px;
+		padding: 10px 20px 10px 20px;
+		border: solid #000000 2px;
+		text-decoration: none;
+		outline: 0;
+		min-width: 100px;
+		min-height: 100px;
+		margin: 5px;
+	}
+
+	.menuHolder {
+		display: none;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
+	}
+
+	.specialBox {
+		//margin: 20px 0px;
+		width: 100%;
+		height: 500px;
+		background-color: rgba(0, 0, 0, 0.5);
+		border-top: 1px solid white;
+		border-bottom: 1px solid white;
+	}
+
+</style>
+
+<body style="overflow: hidden;">
+	<div id="splashHolder" style="position: absolute; top:0px; left: 0px; width:100%; height:100%;">
+		<img class="splash" id="splash" src="images/splash.png">	
+	</div>
+
+	<div id="menuHolder" class="menuHolder">
+		<button class="btn" onclick="window.location = 'ingame.html?id=hello'">1</button>
+
+		<div class="specialBox">
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+
+	
+	function slideMenu() {
+		document.onclick = null;
+		oA = document.getElementById("splashHolder");
+		if (parseInt(oA.style.top) < (window.innerHeight) ) {
+			oA.style.top = parseInt(oA.style.top) + (window.innerHeight / 20) + "px";
+			console.log(oA.style.left);
+			setTimeout(slideMenu, 50);
+		}else{
+			document.getElementById("menuHolder").style.display = "block";
+			document.getElementById("splashHolder").style.display = "none";
+		}		
+	}
+
+
+	window.addEventListener("resize", resize);
+	function resize() {
+		
+		w = window.innerWidth;
+		h = window.innerHeight;
+		
+			
+			if (w > h) {
+				splash.style.width = h + "px";
+				splash.style.height = h + "px";
+				splash.style.top = "0px";
+				splash.style.left = ((w/2)-(h/2)) + "px";
+			}else{
+				splash.style.width = w + "px";
+				splash.style.height = w + "px";
+				splash.style.top = ((h/2)-(w/2)) + "px";
+				splash.style.left = "0px";
+			}
+		
+	}	
+	resize();
+
+	function animBG() {
+		var r = Math.floor((Math.random() * 6) + 1);
+			if (document.body.className == "bg" + r) {
+				animBG();
+			}else{
+				document.body.className = "bg" + r;
+				setTimeout(animBG, 2800);
+			}	
+	}
+
+	var levels = [];
+
+	(function() {		
+		addLevel("06C0000X0400R0201X0501E0402r0502X000460304X0504X0405C0505X0503H0203X0403V", "#C21D6F");
+		addLevel("06C0200O0201X0402X0502E0003T0103X0403H0503X0404X0504X0305O0405X0505X", "#C21D6F");
+		addLevel("10E0300X0901E0601X0802A0602X0902X0003P0203X0403X0803X0404P0704X0405X0505X050680606X0906A0907X0009C0109X020960509H0609X", "#C21D6F");
+		addLevel("06D0100R0200E0300X0400X0500r0001g0201H0401G0202X00038020320503X0004X0504C0305X", "#C21D6F");
+		addLevel("06A0000H0300X0001G0101g030180102X0202X0302X0402X0502X030320403E0004X", "#C21D6F", "#C21D6F");
+		addLevel("11B1000P0005H0400X0505X0204E0002-0602+0707Z0804T1010O", "#C21D6F");
+		addLevel("09C0200C0500X0301X0501X0801X0502X0404E0405H0406X0806X0207X040040508K", "#C21D6F");
+		addLevel("09D0800X0201X0701G0102H0502X0702E0103X0703X0803X0604X0006X0506X0707X0408X0706g", "#C21D6F");
+		addLevel("09F0000H0202X0302X0402X0502X0602X0702X0802X0203X0204X0205X0206X0306X0406X0506X0606X0605X0604X0505E06018010340307207056", "#C21D6F");
+		addLevel("06A0000H0300X0001G0101g030180102X0202X0302X0402X0502X030320403E0004X", "#C21D6F");
+
+		animBG();
+		document.onclick = slideMenu;
+
+	})();
+
+	function addLevel(levelStr, hexColor) {
+		var i = levels.length;
+		levels[i] = {};
+		levels[i].levelStr = levelStr;
+
+		var r = document.getElementById("menuHolder");
+		var b = document.createElement("button");
+		b.className = "btn";
+		b.innerHTML = i + 1;
+		b.style.backgroundImage = "linear-gradient(to bottom, " + hexColor + ", " + ColorLuminance(hexColor, -0.5) + ")";
+
+		r.appendChild(b);
+	}
+
+	function ColorLuminance(hex, lum) {
+		//ColorLuminance functin written by Craig Buckler
+		//http://www.sitepoint.com/javascript-generate-lighter-darker-color/
+
+		// validate hex string
+		hex = String(hex).replace(/[^0-9a-f]/gi, '');
+		if (hex.length < 6) {
+			hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+		}
+		lum = lum || 0;
+
+		// convert to decimal and change luminosity
+		var rgb = "#", c, i;
+		for (i = 0; i < 3; i++) {
+			c = parseInt(hex.substr(i*2,2), 16);
+			c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+			rgb += ("00"+c).substr(c.length);
+		}
+
+		return rgb;
+	}
+
+</script>
+
+</body>
+</html>
